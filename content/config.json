@@ -1,0 +1,44 @@
+{
+  "upcomingEvent": {
+    "isActive": true,
+    "posterImageUrl": "https://picsum.photos/seed/swapposter/400/550",
+    "date": "25. Mája 2024",
+    "time": "14:00 - 17:00",
+    "location": "Komunitné centrum Srdiečko, Hlavná 123",
+    "description": "Prineste vecičky, ktoré už nepotrebujete, a nájdite nové poklady pre vaše deti. Tešíme sa na vás!"
+  },
+  "gallery": {
+    "photos": [
+      {
+        "id": "1",
+        "src": "https://picsum.photos/seed/swap1/600/400",
+        "alt": "Atmosféra na Medulienka Swap 1"
+      },
+      {
+        "id": "2",
+        "src": "https://picsum.photos/seed/swap2/600/400",
+        "alt": "Deti sa hrajú s vymenenými hračkami"
+      },
+      {
+        "id": "3",
+        "src": "https://picsum.photos/seed/swap3/600/400",
+        "alt": "Oblečenie pripravené na výmenu"
+      },
+      {
+        "id": "4",
+        "src": "https://picsum.photos/seed/swap4/600/400",
+        "alt": "Rodičia vyberajú vecičky"
+      },
+      {
+        "id": "5",
+        "src": "https://picsum.photos/seed/swap5/600/400",
+        "alt": "Úsmevy na tvárach účastníkov"
+      },
+      {
+        "id": "6",
+        "src": "https://picsum.photos/seed/swap6/600/400",
+        "alt": "Komunitné stretnutie"
+      }
+    ]
+  }
+}
