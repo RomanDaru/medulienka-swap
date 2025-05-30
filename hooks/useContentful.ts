@@ -57,6 +57,23 @@ export const useContentful = () => {
           length: accessToken?.length,
         });
 
+        // Fetch all media assets
+        const assetsResponse = await client.getAssets();
+
+        const photos = assetsResponse.items
+          .filter(
+            (asset: any) =>
+              asset.fields.file &&
+              asset.fields.file.contentType.startsWith("image/")
+          )
+          .map((asset: any) => ({
+            id: asset.sys.id,
+            src: asset.fields.file.url.startsWith("http")
+              ? asset.fields.file.url
+              : `https:${asset.fields.file.url}`,
+            alt: asset.fields.title || "",
+          }));
+
         // Fetch upcoming event
         const eventResponse = await client.getEntries({
           content_type: "upcomingEvent",
@@ -65,40 +82,7 @@ export const useContentful = () => {
 
         console.log("Event response:", eventResponse);
 
-        // Fetch gallery photos
-        const galleryResponse = await client.getEntries({
-          content_type: "galleryPhoto",
-        });
-
-        console.log("Gallery response:", galleryResponse);
-
-        // Build a map of assetId -> asset
-        const assetMap: Record<string, any> = {};
-        if (galleryResponse.includes && galleryResponse.includes.Asset) {
-          galleryResponse.includes.Asset.forEach((asset: any) => {
-            assetMap[asset.sys.id] = asset;
-          });
-        }
-
         const event = eventResponse.items[0]?.fields as any;
-        const photos = galleryResponse.items
-          .filter(
-            (item: any) =>
-              Array.isArray(item.fields.image) &&
-              item.fields.image[0] &&
-              item.fields.image[0].sys &&
-              assetMap[item.fields.image[0].sys.id]
-          )
-          .map((item: any) => {
-            const asset = assetMap[item.fields.image[0].sys.id];
-            return {
-              id: item.sys.id,
-              src: asset.fields.file.url.startsWith("http")
-                ? asset.fields.file.url
-                : `https:${asset.fields.file.url}`,
-              alt: item.fields.alt || asset.fields.title || "",
-            };
-          });
 
         if (event) {
           setContent({

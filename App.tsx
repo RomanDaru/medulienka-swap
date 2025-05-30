@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import UpcomingSwapModal from "./components/UpcomingSwapModal";
 import BackToTop from "./components/BackToTop";
 import { useContentful } from "./hooks/useContentful";
+import "./public/content/gallery-masonry.css";
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
