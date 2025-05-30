@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavItem } from "../types";
 
-const HoneycombIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg
-    className={className}
-    viewBox='0 0 24 24'
-    fill='currentColor'
-    xmlns='http://www.w3.org/2000/svg'>
-    <path d='M12 2L6 5.5V12.5L12 16L18 12.5V5.5L12 2ZM11 14.06L7 11.5V6.5L11 4.04V14.06ZM13 14.06V4.04L17 6.5V11.5L13 14.06Z M5 13.27L11 16.73V21.96L5 18.5V13.27ZM19 13.27V18.5L13 21.96V16.73L19 13.27Z' />
-  </svg>
-);
-
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -65,7 +55,6 @@ const Navbar: React.FC = () => {
           onClick={(e) => handleNavClick(e, "#hero")}
           className='flex items-center space-x-2 text-xl font-bold hover:text-honey-light transition-colors'
           aria-label='Medulienka Swap - Domov'>
-          <HoneycombIcon className='w-8 h-8 text-white' />
           <span>Medulienka Swap</span>
         </a>
 
