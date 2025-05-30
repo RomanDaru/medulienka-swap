@@ -11,8 +11,8 @@ import UpcomingSwapModal from "./components/UpcomingSwapModal";
 import BackToTop from "./components/BackToTop";
 import FaqSection from "./components/FaqSection";
 import { useContentful } from "./hooks/useContentful";
-import "./public/content/gallery-masonry.css";
-import "./public/content/flip-card.css";
+import "./src/gallery-masonry.css";
+import "./src/flip-card.css";
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
