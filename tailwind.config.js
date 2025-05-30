@@ -29,5 +29,7 @@ export default {
       },
     },
   },
-  plugins: [scrollbar],
+  plugins: [
+    scrollbar({ nocompatible: true, preferredStrategy: "pseudoelements" }),
+  ],
 };

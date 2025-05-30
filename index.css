@@ -1,3 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom thin rounded scrollbar */
+.scrollbar-thin-rounded {
+  scrollbar-width: thin;
+  scrollbar-color: #ffc107 rgba(255, 255, 255, 0.2);
+}
+
+.scrollbar-thin-rounded::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-thin-rounded::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  margin: 2px;
+}
+
+.scrollbar-thin-rounded::-webkit-scrollbar-thumb {
+  background: #ffc107;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar-thin-rounded::-webkit-scrollbar-thumb:hover {
+  background: #ffd54f;
+  background-clip: content-box;
+}
+
+.scrollbar-thin-rounded::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Extra thin scrollbar variant */
+.scrollbar-extra-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #ffc107 rgba(255, 255, 255, 0.1);
+}
+
+.scrollbar-extra-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-extra-thin::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+}
+
+.scrollbar-extra-thin::-webkit-scrollbar-thumb {
+  background: #ffc107;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar-extra-thin::-webkit-scrollbar-thumb:hover {
+  background: #ffd54f;
+  background-clip: content-box;
+}
+
+/* Scrollbar for light backgrounds */
+.scrollbar-light-bg {
+  scrollbar-width: thin;
+  scrollbar-color: #ffa000 rgba(0, 0, 0, 0.1);
+}
+
+.scrollbar-light-bg::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-light-bg::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  margin: 2px;
+}
+
+.scrollbar-light-bg::-webkit-scrollbar-thumb {
+  background: #ffa000;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar-light-bg::-webkit-scrollbar-thumb:hover {
+  background: #ff8f00;
+  background-clip: content-box;
+}
+
+.scrollbar-light-bg::-webkit-scrollbar-corner {
+  background: transparent;
+}
