@@ -37,15 +37,21 @@ const FlipCard: React.FC<FlipCardProps> = ({ question, answer }) => {
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
           }}>
-          {Array.isArray(answer) ? (
-            <ul className='list-none text-left space-y-4'>
-              {answer.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className='text-lg'>{answer}</p>
-          )}
+          <div className='flex-1 p-6 scrollbar-track-rounded-full scrollbar-track-rodunded-full scrollbar scrollbar-thumb-orange-700 scrollbar-track-orange-300 overflow-y-auto'>
+            {Array.isArray(answer) ? (
+              <ul className='list-none space-y-3 text-sm leading-relaxed'>
+                {answer.map((item, index) => (
+                  <li key={index} className='flex items-start'>
+                    <span className='flex-1'>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className='text-center flex items-center justify-center h-full'>
+                <p className='text-base leading-relaxed'>{answer}</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
