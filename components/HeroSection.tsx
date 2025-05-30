@@ -12,7 +12,7 @@ const HeroSection: React.FC = () => {
       <div className='absolute inset-0 bg-black opacity-50'></div>
       <div className='container mx-auto px-6 py-24 md:py-40 relative z-10 flex flex-col items-center text-center'>
         <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold mb-6'>
-          Vitajte na Medulienka Swap!
+          Medulienka SWAP
         </h1>
         <p className='text-lg sm:text-xl md:text-2xl mb-8 max-w-2xl'>
           Vymeňte, ušetrite, potešte! Spoločne tvoríme udržateľnejšiu budúcnosť.

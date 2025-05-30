@@ -53,7 +53,7 @@ const UpcomingSwapModal: React.FC<UpcomingSwapModalProps> = ({
       aria-modal='true'
       aria-labelledby='modal-title'>
       <div
-        className='bg-white rounded-xl shadow-2xl p-6 md:p-8 w-full max-w-md transform transition-all duration-300 ease-in-out scale-100 opacity-100 flex flex-col'
+        className='bg-white rounded-xl shadow-2xl md:p-6 md:p-8 w-full mx-auto md:max-w-3xl transform transition-all duration-300 ease-in-out scale-100 opacity-100 flex flex-col'
         onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
@@ -78,7 +78,7 @@ const UpcomingSwapModal: React.FC<UpcomingSwapModalProps> = ({
             <img
               src={posterImageUrl}
               alt='Plagát najbližšieho Medulienka Swapu'
-              className='w-full h-auto object-contain rounded-lg max-h-[75vh]'
+              className='w-full h-auto object-contain rounded-lg max-h-[90vh]'
             />
           </div>
         ) : (

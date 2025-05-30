@@ -57,14 +57,28 @@ export const useContentful = () => {
           length: accessToken?.length,
         });
 
+        // Fetch upcoming event
+        const eventResponse = await client.getEntries({
+          content_type: "upcomingEvent",
+          limit: 1,
+        });
+
+        console.log("Event response:", eventResponse);
+        const event = eventResponse.items[0]?.fields as any;
+        const posterImageUrl = event?.posterImage?.fields?.file?.url || "";
+
         // Fetch all media assets
         const assetsResponse = await client.getAssets();
 
+        // Filter out the upcoming event poster from the gallery photos
         const photos = assetsResponse.items
           .filter(
             (asset: any) =>
               asset.fields.file &&
-              asset.fields.file.contentType.startsWith("image/")
+              asset.fields.file.contentType.startsWith("image/") &&
+              // Exclude the upcoming event poster
+              asset.fields.file.url !== posterImageUrl &&
+              `https:${asset.fields.file.url}` !== posterImageUrl // Check both http and https
           )
           .map((asset: any) => ({
             id: asset.sys.id,
@@ -74,21 +88,11 @@ export const useContentful = () => {
             alt: asset.fields.title || "",
           }));
 
-        // Fetch upcoming event
-        const eventResponse = await client.getEntries({
-          content_type: "upcomingEvent",
-          limit: 1,
-        });
-
-        console.log("Event response:", eventResponse);
-
-        const event = eventResponse.items[0]?.fields as any;
-
         if (event) {
           setContent({
             upcomingEvent: {
               isActive: Boolean(event.isActive),
-              posterImageUrl: event.posterImage?.fields?.file?.url || "",
+              posterImageUrl: posterImageUrl,
               date: String(event.date || ""),
               time: String(event.time || ""),
               location: String(event.location || ""),
