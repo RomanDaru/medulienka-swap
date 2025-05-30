@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import UpcomingSwapModal from "./components/UpcomingSwapModal";
 import BackToTop from "./components/BackToTop";
 import FaqSection from "./components/FaqSection";
+import HoneyWave from "./components/HoneyWave";
 import { useContentful } from "./hooks/useContentful";
 import "./src/gallery-masonry.css";
 import "./src/flip-card.css";
@@ -69,10 +70,59 @@ const App: React.FC = () => {
       <main className='flex-grow'>
         <HeroSection />
         <AboutSection />
+
+        {/* About to How It Works transition */}
+        <HoneyWave
+          direction='top-to-bottom'
+          style='flowing'
+          fromColor='#ffffff'
+          toColor='#FFFBEB'
+          height='h-20 md:h-28'
+        />
+
         <HowItWorksSection />
+
+        {/* How It Works to FAQ transition */}
+        <HoneyWave
+          direction='top-to-bottom'
+          style='dynamic'
+          fromColor='#FFFBEB'
+          toColor='#FFFBEB'
+          height='h-20 md:h-28'
+        />
+
         <FaqSection />
+
+        {/* FAQ to Gallery transition */}
+        <HoneyWave
+          direction='top-to-bottom'
+          style='dynamic'
+          fromColor='#FFFBEB'
+          toColor='#ffffff'
+          height='h-20 md:h-28'
+        />
+
         <GallerySection photos={content?.gallery.photos || []} />
+
+        {/* Gallery to Contact transition */}
+        <HoneyWave
+          direction='top-to-bottom'
+          style='gentle'
+          fromColor='#ffffff'
+          toColor='#FFFBEB'
+          height='h-16 md:h-24'
+        />
+
         <ContactSection />
+
+        {/* Contact to Footer transition */}
+        <HoneyWave
+          direction='top-to-bottom'
+          style='flowing'
+          fromColor='#FFFBEB'
+          toColor='#FFA000'
+          height='h-12 md:h-20'
+        />
       </main>
       <Footer />
       <BackToTop />
