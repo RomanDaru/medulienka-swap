@@ -8,8 +8,10 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import UpcomingSwapModal from "./components/UpcomingSwapModal";
 import BackToTop from "./components/BackToTop";
+import FaqSection from "./components/FaqSection";
 import { useContentful } from "./hooks/useContentful";
 import "./public/content/gallery-masonry.css";
+import "./public/content/flip-card.css";
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,6 +69,7 @@ const App: React.FC = () => {
         <HeroSection />
         <AboutSection />
         <HowItWorksSection />
+        <FaqSection />
         <GallerySection photos={content?.gallery.photos || []} />
         <ContactSection />
       </main>

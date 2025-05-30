@@ -19,8 +19,8 @@ const GallerySection: React.FC<GallerySectionProps> = ({ photos }) => {
     <SectionContainer id='galeria' title='Galéria' className='bg-white'>
       <p className='text-center text-lg text-gray-600 mb-10 max-w-2xl mx-auto'>
         Pozrite si fotky z našich minulých swapov a atmosféru plnú radosti a
-        zdieľania. Tieto momentky zachytávajú úsmevy, nové priateľstvá a radosť
-        z výmeny.
+        zdieľania. Tieto momenty zachytávajú úsmevy, nové priateľstvá a radosť z
+        výmeny.
       </p>
       <Masonry
         breakpointCols={breakpointColumnsObj}
