@@ -28,13 +28,10 @@ interface Content {
 const spaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
 const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
 
-// Log environment variables (without exposing the full token)
-console.log("Environment check:", {
-  spaceId,
-  hasAccessToken: !!accessToken,
-  accessTokenLength: accessToken?.length,
-  accessTokenPrefix: accessToken?.substring(0, 5), // Log first 5 chars to verify format
-});
+// Environment validation (production-safe)
+if (!spaceId || !accessToken) {
+  console.error("Missing required Contentful environment variables");
+}
 
 // Initialize the Contentful client
 const client = createClient({
@@ -50,12 +47,7 @@ export const useContentful = () => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        console.log("Fetching content from Contentful...");
-        console.log("Using space ID:", spaceId);
-        console.log("Access token format check:", {
-          startsWithCFPAT: accessToken?.startsWith("CFPAT-"),
-          length: accessToken?.length,
-        });
+        // Fetching content from Contentful
 
         // Fetch upcoming event
         const eventResponse = await client.getEntries({
@@ -63,7 +55,6 @@ export const useContentful = () => {
           limit: 1,
         });
 
-        console.log("Event response:", eventResponse);
         const event = eventResponse.items[0]?.fields as any;
         const posterImageUrl = event?.posterImage?.fields?.file?.url || "";
 
