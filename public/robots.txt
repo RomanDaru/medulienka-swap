@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://medulienkaswap.sk/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Allow all search engines to index the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow crawling of admin or private areas (if any exist in the future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Allow crawling of important files
+Allow: /sitemap.xml
+Allow: /robots.txt
