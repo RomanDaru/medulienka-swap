@@ -7,6 +7,50 @@
     "location": "Komunitné centrum Srdiečko, Hlavná 123",
     "description": "Prineste vecičky, ktoré už nepotrebujete, a nájdite nové poklady pre vaše deti. Tešíme sa na vás!"
   },
+  "posterCollection": {
+    "posters": [
+      {
+        "id": "1",
+        "src": "https://picsum.photos/seed/swapposter1/400/550",
+        "alt": "Plagát Medulienka Swap - Jar 2024",
+        "title": "Jarný Swap 2024",
+        "date": "Marec 2024",
+        "description": "Náš prvý jarný swap s detským oblečením a hračkami."
+      },
+      {
+        "id": "2",
+        "src": "https://picsum.photos/seed/swapposter2/400/550",
+        "alt": "Plagát Medulienka Swap - Leto 2024",
+        "title": "Letný Swap 2024",
+        "date": "Jún 2024",
+        "description": "Letný swap zameraný na letné oblečenie a outdoorové aktivity."
+      },
+      {
+        "id": "3",
+        "src": "https://picsum.photos/seed/swapposter3/400/550",
+        "alt": "Plagát Medulienka Swap - Jeseň 2024",
+        "title": "Jesenný Swap 2024",
+        "date": "September 2024",
+        "description": "Jesenný swap s teplým oblečením a školskými potrebami."
+      },
+      {
+        "id": "4",
+        "src": "https://picsum.photos/seed/swapposter4/400/550",
+        "alt": "Plagát Medulienka Swap - Zima 2024",
+        "title": "Zimný Swap 2024",
+        "date": "December 2024",
+        "description": "Zimný swap s vianočnou atmosférou."
+      },
+      {
+        "id": "5",
+        "src": "https://picsum.photos/seed/swapposter/400/550",
+        "alt": "Plagát najbližšieho Medulienka Swapu",
+        "title": "Najbližší Swap",
+        "date": "Máj 2024",
+        "description": "Aktuálny plagát nadchádzajúceho swapu."
+      }
+    ]
+  },
   "gallery": {
     "photos": [
       {

@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import HowItWorksSection from "./components/HowItWorksSection";
+import PosterCollectionSection from "./components/PosterCollectionSection";
 import GallerySection from "./components/GallerySection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
@@ -84,21 +85,34 @@ const App: React.FC = () => {
 
         {/* How It Works to FAQ transition */}
         <HoneyWave
-          direction='top-to-bottom'
-          style='dynamic'
-          fromColor='#FFFBEB'
+          direction='bottom-to-top'
+          style='flowing'
+          fromColor='#ffffff'
           toColor='#FFFBEB'
           height='h-20 md:h-28'
         />
 
         <FaqSection />
 
-        {/* FAQ to Gallery transition */}
+        {/* FAQ to Poster Collection transition */}
         <HoneyWave
           direction='top-to-bottom'
-          style='dynamic'
-          fromColor='#FFFBEB'
-          toColor='#ffffff'
+          style='flowing'
+          fromColor='#ffffff'
+          toColor='#FFFBEB'
+          height='h-20 md:h-28'
+        />
+
+        <PosterCollectionSection
+          posters={content?.posterCollection.posters || []}
+        />
+
+        {/* Poster Collection to Gallery transition */}
+        <HoneyWave
+          direction='bottom-to-top'
+          style='flowing'
+          fromColor='#ffffff'
+          toColor='#FFFBEB'
           height='h-20 md:h-28'
         />
 
@@ -107,22 +121,13 @@ const App: React.FC = () => {
         {/* Gallery to Contact transition */}
         <HoneyWave
           direction='top-to-bottom'
-          style='gentle'
+          style='flowing'
           fromColor='#ffffff'
           toColor='#FFFBEB'
-          height='h-16 md:h-24'
+          height='h-20 md:h-28'
         />
 
         <ContactSection />
-
-        {/* Contact to Footer transition */}
-        <HoneyWave
-          direction='top-to-bottom'
-          style='flowing'
-          fromColor='#FFFBEB'
-          toColor='#FFA000'
-          height='h-12 md:h-20'
-        />
       </main>
       <Footer />
       <BackToTop />

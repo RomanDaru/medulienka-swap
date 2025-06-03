@@ -36,7 +36,7 @@ const faqItems = [
 
 const FaqSection: React.FC<FaqSectionProps> = () => {
   return (
-    <SectionContainer id='faq' title='Časté otázky' className='bg-honey-light'>
+    <SectionContainer id='faq' title='Časté otázky' className='bg-white'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         {faqItems.map((item, index) => (
           <FlipCard key={index} question={item.question} answer={item.answer} />

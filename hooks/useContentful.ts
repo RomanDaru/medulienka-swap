@@ -17,8 +17,20 @@ interface Photo {
   alt: string;
 }
 
+interface Poster {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+  date: string;
+  description?: string;
+}
+
 interface Content {
   upcomingEvent: UpcomingEvent;
+  posterCollection: {
+    posters: Poster[];
+  };
   gallery: {
     photos: Photo[];
   };
@@ -58,10 +70,93 @@ export const useContentful = () => {
         const event = eventResponse.items[0]?.fields as any;
         const posterImageUrl = event?.posterImage?.fields?.file?.url || "";
 
-        // Fetch all media assets
+        // Fetch poster collection from Contentful first
+        let posterCollection: { posters: Poster[] } = { posters: [] };
+        let posterUrls: string[] = [];
+        try {
+          const posterResponse = await client.getEntries({
+            content_type: "posterCollection",
+          });
+
+          const posters = posterResponse.items
+            .map((item: any) => {
+              const fields = item.fields;
+              const posterAsset = fields.poster;
+
+              // Handle date field - check if it's a Date field or text field
+              let formattedDate = "";
+              if (fields.datum) {
+                // If it's a Date field, format it
+                if (
+                  fields.datum instanceof Date ||
+                  typeof fields.datum === "string"
+                ) {
+                  try {
+                    const date = new Date(fields.datum);
+                    formattedDate = date.toLocaleDateString("sk-SK", {
+                      year: "numeric",
+                      month: "long",
+                    });
+                  } catch (e) {
+                    // If date parsing fails, use the raw value
+                    formattedDate = String(fields.datum);
+                  }
+                } else {
+                  formattedDate = String(fields.datum);
+                }
+              } else {
+                // Fallback to creation date if no datum field
+                const createdDate = new Date(item.sys.createdAt);
+                formattedDate = createdDate.toLocaleDateString("sk-SK", {
+                  year: "numeric",
+                  month: "long",
+                });
+              }
+
+              const posterUrl = posterAsset?.fields?.file?.url
+                ? posterAsset.fields.file.url.startsWith("http")
+                  ? posterAsset.fields.file.url
+                  : `https:${posterAsset.fields.file.url}`
+                : "";
+
+              // Collect poster URLs for filtering from gallery
+              if (posterUrl) {
+                posterUrls.push(posterUrl);
+              }
+
+              return {
+                id: item.sys.id,
+                src: posterUrl,
+                alt: fields.posterName || "",
+                title: fields.posterName || "",
+                date: formattedDate,
+                description: fields.posterDescription || "",
+              };
+            })
+            .filter((poster: any) => poster.src); // Only include posters with valid images
+
+          posterCollection = { posters };
+        } catch (posterErr) {
+          console.warn(
+            "Could not load poster collection from Contentful:",
+            posterErr
+          );
+          // Fallback to local content if Contentful fails
+          try {
+            const localResponse = await fetch("/content/config.json");
+            if (localResponse.ok) {
+              const localData = await localResponse.json();
+              posterCollection = localData.posterCollection || { posters: [] };
+            }
+          } catch (localErr) {
+            console.warn("Could not load local poster collection:", localErr);
+          }
+        }
+
+        // Fetch all media assets for gallery (excluding all posters)
         const assetsResponse = await client.getAssets();
 
-        // Filter out the upcoming event poster from the gallery photos
+        // Filter out ALL posters (upcoming event poster + poster collection posters) from gallery
         const photos = assetsResponse.items
           .filter(
             (asset: any) =>
@@ -69,7 +164,10 @@ export const useContentful = () => {
               asset.fields.file.contentType.startsWith("image/") &&
               // Exclude the upcoming event poster
               asset.fields.file.url !== posterImageUrl &&
-              `https:${asset.fields.file.url}` !== posterImageUrl // Check both http and https
+              `https:${asset.fields.file.url}` !== posterImageUrl &&
+              // Exclude all poster collection posters
+              !posterUrls.includes(asset.fields.file.url) &&
+              !posterUrls.includes(`https:${asset.fields.file.url}`)
           )
           .map((asset: any) => ({
             id: asset.sys.id,
@@ -89,6 +187,7 @@ export const useContentful = () => {
               location: String(event.location || ""),
               description: String(event.description || ""),
             },
+            posterCollection,
             gallery: {
               photos,
             },

@@ -9,6 +9,8 @@ const Navbar: React.FC = () => {
     { label: "Domov", href: "#hero" },
     { label: "O nás", href: "#o-nas" },
     { label: "Ako to funguje", href: "#ako-to-funguje" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Plagáty", href: "#postery" },
     { label: "Galéria", href: "#galeria" },
     { label: "Kontakt", href: "#kontakt" },
   ];
@@ -42,7 +44,21 @@ const Navbar: React.FC = () => {
     const targetId = href.substring(1);
     const element = document.getElementById(targetId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      // Calculate navbar height dynamically
+      const navbar = document.querySelector("nav");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+      // Add extra offset for mobile (mobile menu might affect spacing)
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const extraOffset = isMobile ? 20 : 10; // Extra padding for mobile
+
+      const elementPosition = element.offsetTop - navbarHeight - extraOffset;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+
       setIsMobileMenuOpen(false);
     }
   };

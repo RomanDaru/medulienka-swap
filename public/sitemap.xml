@@ -35,6 +35,20 @@
   </url>
 
   <url>
+    <loc>https://medulienkaswap.sk/#faq</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://medulienkaswap.sk/#postery</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://medulienkaswap.sk/#galeria</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>

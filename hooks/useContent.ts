@@ -15,8 +15,20 @@ interface Photo {
   alt: string;
 }
 
+interface Poster {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+  date: string;
+  description?: string;
+}
+
 interface Content {
   upcomingEvent: UpcomingEvent;
+  posterCollection: {
+    posters: Poster[];
+  };
   gallery: {
     photos: Photo[];
   };

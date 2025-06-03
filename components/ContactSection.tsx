@@ -54,8 +54,7 @@ const ContactSection: React.FC = () => {
               href='mailto:rcmedulienka@gmail.com'
               className='text-forest-dark hover:text-forest-DEFAULT underline'>
               rcmedulienka@gmail.com
-            </a>{" "}
-            (placeholder)
+            </a>
           </p>
           <p>
             <strong>Miesto konania:</strong> Rodinné Centrum Medulienka, Hollého
